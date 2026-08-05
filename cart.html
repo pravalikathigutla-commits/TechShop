@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TechShop | Cart</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <h2>🛒 TechShop</h2>
+
+    </div>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="products.html">Products</a></li>
+
+            <li><a href="about.html">About</a></li>
+
+            <li><a href="contact.html">Contact</a></li>
+
+            <li>
+
+                <a href="cart.html" class="active">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    Cart
+
+                    <span id="cart-count">0</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<section class="page-title">
+
+    <h1>Shopping Cart</h1>
+
+</section>
+
+<section class="cart-container">
+
+    <div id="cart-items">
+
+    </div>
+
+    <div class="cart-total">
+
+        <h2>
+
+            Total : $
+
+            <span id="total-price">
+
+                0
+
+            </span>
+
+        </h2>
+
+        <button id="checkout">
+
+            Checkout
+
+        </button>
+
+    </div>
+
+</section>
+
+<script src="cart.js"></script>
+
+</body>
+
+</html>

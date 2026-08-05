@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TechShop | Products</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+
+        <h2>🛒 TechShop</h2>
+
+    </div>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="products.html" class="active">Products</a></li>
+
+            <li><a href="about.html">About</a></li>
+
+            <li><a href="contact.html">Contact</a></li>
+
+            <li>
+
+                <a href="cart.html">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    Cart
+
+                    <span id="cart-count">0</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<!-- PAGE TITLE -->
+
+<section class="page-title">
+
+    <h1>Our Products</h1>
+
+    <p>Choose from our latest collection of electronics.</p>
+
+</section>
+
+<!-- SEARCH + FILTER -->
+
+<section class="product-controls">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search products...">
+
+    <select id="categoryFilter">
+
+        <option value="all">All Categories</option>
+
+        <option value="Laptop">Laptop</option>
+
+        <option value="Mobile">Mobile</option>
+
+        <option value="Watch">Watch</option>
+
+        <option value="Headphones">Headphones</option>
+
+    </select>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="products-page">
+
+    <div id="product-list" class="products-grid">
+
+        <!-- JavaScript will load products here -->
+
+    </div>
+
+</section>
+
+<script src="products.js"></script>
+
+</body>
+
+</html>
