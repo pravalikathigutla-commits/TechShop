@@ -155,7 +155,7 @@
 
             <p>$999</p>
 
-            <button>Add to Cart</button>
+            <button type="button" onclick="addHomeProduct(1)">Add to Cart</button>
 
         </div>
 
@@ -167,7 +167,7 @@
 
             <p>$699</p>
 
-            <button>Add to Cart</button>
+            <button type="button" onclick="addHomeProduct(2)">Add to Cart</button>
 
         </div>
 
@@ -179,7 +179,7 @@
 
             <p>$249</p>
 
-            <button>Add to Cart</button>
+            <button type="button" onclick="addHomeProduct(3)">Add to Cart</button>
 
         </div>
 
@@ -191,7 +191,7 @@
 
             <p>$129</p>
 
-            <button>Add to Cart</button>
+            <button type="button" onclick="addHomeProduct(4)">Add to Cart</button>
 
         </div>
 
@@ -208,22 +208,22 @@
 
     <div class="category-grid">
 
-        <div class="category-card">
+        <div class="category-card" data-category="Laptop">
             <i class="fa-solid fa-laptop"></i>
             <h3>Laptops</h3>
         </div>
 
-        <div class="category-card">
+        <div class="category-card" data-category="Mobile">
             <i class="fa-solid fa-mobile-screen"></i>
             <h3>Mobiles</h3>
         </div>
 
-        <div class="category-card">
+        <div class="category-card" data-category="Headphones">
             <i class="fa-solid fa-headphones"></i>
             <h3>Headphones</h3>
         </div>
 
-        <div class="category-card">
+        <div class="category-card" data-category="Watch">
             <i class="fa-solid fa-clock"></i>
             <h3>Smart Watches</h3>
         </div>
@@ -453,6 +453,8 @@
 
 </footer>
 
+<script src="products-data.js"></script>
+<script src="store.js"></script>
 <script src="app.js"></script>
 
 </body>

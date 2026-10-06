@@ -70,30 +70,34 @@
 
     </div>
 
-    <div class="cart-total">
+    <aside class="cart-summary">
+        <div class="summary-heading"><h2>Order Summary</h2><span id="cart-items-count">0 items</span></div>
+        <div class="summary-row"><span>Subtotal</span><strong id="subtotal-price">$0.00</strong></div>
+        <div class="summary-row"><span>Shipping</span><strong id="shipping-price">FREE</strong></div>
+        <hr>
+        <div class="summary-row total-row"><span>Total</span><strong id="total-price">$0.00</strong></div>
+        <button id="checkout" class="checkout-btn"><i class="fa-solid fa-lock"></i> Secure Checkout</button>
+        <p class="secure-note"><i class="fa-solid fa-shield-halved"></i> Demo checkout — no real payment is processed.</p>
+    </aside>
 
-        <h2>
-
-            Total : $
-
-            <span id="total-price">
-
-                0
-
-            </span>
-
-        </h2>
-
-        <button id="checkout">
-
-            Checkout
-
-        </button>
-
+    <div id="checkout-modal" class="modal">
+      <div class="modal-content">
+        <button id="close-modal" class="modal-close" type="button">&times;</button>
+        <h2>Complete Your Order</h2>
+        <p>This is a portfolio demo checkout.</p>
+        <form id="checkout-form">
+          <input required placeholder="Full name" aria-label="Full name">
+          <input required type="email" placeholder="Email address" aria-label="Email address">
+          <textarea required placeholder="Delivery address" aria-label="Delivery address"></textarea>
+          <button class="checkout-btn" type="submit">Place Demo Order</button>
+        </form>
+      </div>
     </div>
 
 </section>
 
+<script src="products-data.js"></script>
+<script src="store.js"></script>
 <script src="cart.js"></script>
 
 </body>

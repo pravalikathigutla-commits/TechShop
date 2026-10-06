@@ -1,72 +1,50 @@
-# 🛒 TechShop - E-Commerce Product Catalog
+# TechShop — Responsive E-Commerce Web Application
 
-## 📌 Project Description
+TechShop is a frontend e-commerce application built with HTML5, CSS3 and vanilla JavaScript. It demonstrates a realistic shopping flow without a backend or real payment processing.
 
-TechShop is a responsive e-commerce website built using HTML, CSS, and JavaScript. It allows users to browse products, search and filter items, view product details, add products to a shopping cart, and contact the store through a contact form.
+## Core Features
+- Responsive storefront for mobile, tablet and desktop
+- Product catalog powered by a single JavaScript product data source
+- Live keyword search and category filtering
+- Price-range filtering and sorting by price, rating and name
+- Product detail pages with ratings, features and quantity selection
+- Persistent shopping cart using LocalStorage
+- Cart quantity controls, item removal, subtotal, shipping and total calculation
+- Free-shipping rule for orders over $500
+- Demo checkout flow with validation and generated order ID
+- Home-page search and category shortcuts
+- Newsletter validation and user feedback toast messages
+- Accessible labels, semantic sections and responsive layouts
 
----
-
-## 🚀 Features
-
-- 🏠 Home Page
-- 🛍 Product Catalog
-- 🔍 Product Search
-- 🏷 Category Filter
-- 📄 Product Details Page
-- 🛒 Shopping Cart
-- 💾 Local Storage
-- 📱 Fully Responsive Design
-- 📧 Contact Form (Formspree)
-- ℹ About Page
-- ✨ Modern UI
-
----
-
-## 🛠 Technologies Used
-
+## Tech Stack
 - HTML5
-- CSS3
-- JavaScript (ES6)
-- CSS Grid
-- Flexbox
-- Local Storage
+- CSS3 (Grid, Flexbox, responsive media queries)
+- JavaScript ES6+
+- LocalStorage
 - Font Awesome
+- Formspree for the contact form
 
----
-
-## 📂 Project Structure
-
+## Project Structure
 ```
 TechShop/
-│
 ├── index.html
 ├── products.html
 ├── product.html
 ├── cart.html
 ├── about.html
 ├── contact.html
-│
-├── css/
-│   └── style.css
-│
-├── js/
-│   ├── app.js
-│   ├── products.js
-│   └── cart.js
-│
-├── images/
-│
-└── README.md
+├── products-data.js
+├── store.js
+├── app.js
+├── product.js
+├── product-details.js
+├── cart.js
+├── style.css
+└── product image assets
 ```
 
----
+## Important Note
+This is a portfolio/demo e-commerce application. Checkout simulates order placement; it does not process real payments or store customer payment information.
 
-## 👩‍💻 Author
-
+## Author
 **Pravalika**
-
----
-
-## 📄 License
-
-This project is created for educational purposes.

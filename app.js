@@ -1,77 +1,28 @@
-// ==============================
-// CART COUNT
-// ==============================
-
-function updateCartCount() {
-
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    const cartCount = document.getElementById("cart-count");
-
-    if (cartCount) {
-
-        cartCount.innerText = cart.length;
-
-    }
-
+function addHomeProduct(id) {
+  TechShop.addToCartById(id);
 }
-
-updateCartCount();
-
-// ==============================
-// NEWSLETTER SUBSCRIPTION
-// ==============================
+window.addHomeProduct = addHomeProduct;
 
 const newsletterBtn = document.querySelector(".newsletter-box button");
-
-if (newsletterBtn) {
-
-    newsletterBtn.addEventListener("click", function () {
-
-        const email = document.querySelector(".newsletter-box input").value.trim();
-
-        if (email === "") {
-
-            alert("Please enter your email.");
-
-            return;
-
-        }
-
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!emailPattern.test(email)) {
-
-            alert("Please enter a valid email address.");
-
-            return;
-
-        }
-
-        alert("Thank you for subscribing!");
-
-        document.querySelector(".newsletter-box input").value = "";
-
-    });
-
-}
-
-// ==============================
-// ACTIVE NAVIGATION LINK
-// ==============================
-
-const currentPage = window.location.pathname.split("/").pop();
-
-const navLinks = document.querySelectorAll("nav ul li a");
-
-navLinks.forEach(link => {
-
-    const href = link.getAttribute("href");
-
-    if (href === currentPage) {
-
-        link.classList.add("active");
-
-    }
-
+if (newsletterBtn) newsletterBtn.addEventListener("click", () => {
+  const input = document.querySelector(".newsletter-box input");
+  const email = input.value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return TechShop.showToast("Enter a valid email address");
+  TechShop.showToast("Thanks for subscribing!");
+  input.value = "";
 });
+
+const homeSearchButton = document.querySelector(".search-box button");
+const homeSearchInput = document.querySelector(".search-box input");
+function goToSearch() {
+  const query = homeSearchInput?.value.trim() || "";
+  window.location.href = query ? `products.html?search=${encodeURIComponent(query)}` : "products.html";
+}
+homeSearchButton?.addEventListener("click", goToSearch);
+homeSearchInput?.addEventListener("keydown", e => { if (e.key === "Enter") goToSearch(); });
+
+document.querySelectorAll(".category-card[data-category]").forEach(card => {
+  card.addEventListener("click", () => window.location.href = `products.html?category=${encodeURIComponent(card.dataset.category)}`);
+});
+
+TechShop.updateCartCount();

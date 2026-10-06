@@ -86,17 +86,24 @@
         placeholder="Search products...">
 
     <select id="categoryFilter">
-
         <option value="all">All Categories</option>
-
-        <option value="Laptop">Laptop</option>
-
-        <option value="Mobile">Mobile</option>
-
-        <option value="Watch">Watch</option>
-
+        <option value="Laptop">Laptops</option>
+        <option value="Mobile">Mobiles</option>
+        <option value="Watch">Smart Watches</option>
         <option value="Headphones">Headphones</option>
-
+    </select>
+    <select id="priceFilter">
+        <option value="all">Any Price</option>
+        <option value="under200">Under $200</option>
+        <option value="200to500">$200 – $500</option>
+        <option value="over500">Over $500</option>
+    </select>
+    <select id="sortFilter">
+        <option value="default">Sort: Recommended</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="rating">Top Rated</option>
+        <option value="name">Name: A–Z</option>
     </select>
 
 </section>
@@ -104,7 +111,7 @@
 <!-- PRODUCTS -->
 
 <section class="products-page">
-
+    <div class="results-bar"><span id="result-count">0 products</span><span>Free shipping on orders over $500</span></div>
     <div id="product-list" class="products-grid">
 
         <!-- JavaScript will load products here -->
@@ -113,7 +120,9 @@
 
 </section>
 
-<script src="products.js"></script>
+<script src="products-data.js"></script>
+<script src="store.js"></script>
+<script src="product.js"></script>
 
 </body>
 

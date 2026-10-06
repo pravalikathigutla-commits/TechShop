@@ -1,195 +1,60 @@
-// ===============================
-// Product Data
-// ===============================
-
-const products = [
-
-{
-    id:1,
-    name:"Gaming Laptop",
-    category:"Laptop",
-    price:999,
-    image:"images/laptop.jpg"
-},
-
-{
-    id:2,
-    name:"Smart Phone",
-    category:"Mobile",
-    price:699,
-    image:"images/mobile.jpg"
-},
-
-{
-    id:3,
-    name:"Smart Watch",
-    category:"Watch",
-    price:249,
-    image:"images/watch.jpg"
-},
-
-{
-    id:4,
-    name:"Wireless Headphones",
-    category:"Headphones",
-    price:129,
-    image:"images/headphones.jpg"
-},
-
-{
-    id:5,
-    name:"Business Laptop",
-    category:"Laptop",
-    price:899,
-    image:"images/laptop.jpg"
-},
-
-{
-    id:6,
-    name:"Flagship Mobile",
-    category:"Mobile",
-    price:799,
-    image:"images/mobile.jpg"
-},
-
-{
-    id:7,
-    name:"Fitness Watch",
-    category:"Watch",
-    price:199,
-    image:"images/watch.jpg"
-},
-
-{
-    id:8,
-    name:"Bluetooth Headphones",
-    category:"Headphones",
-    price:149,
-    image:"images/headphones.jpg"
-}
-
-];
-
-// ===============================
-// HTML Elements
-// ===============================
-
 const productList = document.getElementById("product-list");
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
+const sortFilter = document.getElementById("sortFilter");
+const priceFilter = document.getElementById("priceFilter");
+const resultCount = document.getElementById("result-count");
 
-// ===============================
-// Display Products
-// ===============================
-
-function displayProducts(productArray){
-
-    productList.innerHTML="";
-
-    productArray.forEach(product=>{
-
-        productList.innerHTML += `
-
-        <div class="product-card">
-
-            <img src="${product.image}" alt="${product.name}">
-
-            <h3>${product.name}</h3>
-
-            <p>$${product.price}</p>
-
-            <button onclick="addToCart(${product.id})">
-
-                Add to Cart
-
-            </button>
-
+function displayProducts(list) {
+  if (!productList) return;
+  if (resultCount) resultCount.textContent = `${list.length} product${list.length === 1 ? "" : "s"}`;
+  if (!list.length) {
+    productList.innerHTML = `<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><h3>No products found</h3><p>Try another search, category or price range.</p></div>`;
+    return;
+  }
+  productList.innerHTML = list.map(product => `
+    <article class="product-card">
+      <a class="product-image-link" href="product.html?id=${product.id}" aria-label="View ${product.name}">
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
+        ${product.oldPrice ? `<span class="discount-badge">${Math.round((1 - product.price / product.oldPrice) * 100)}% OFF</span>` : ""}
+      </a>
+      <div class="product-card-content">
+        <span class="product-category">${product.category}</span>
+        <h3>${product.name}</h3>
+        <div class="rating-row"><span>★ ${product.rating}</span><small>(${product.reviews})</small></div>
+        <div class="price-row"><strong>$${product.price}</strong>${product.oldPrice ? `<del>$${product.oldPrice}</del>` : ""}</div>
+        <div class="product-actions">
+          <a class="view-btn" href="product.html?id=${product.id}">Details</a>
+          <button type="button" onclick="TechShop.addToCartById(${product.id})"><i class="fa-solid fa-cart-plus"></i> Add</button>
         </div>
-
-        `;
-
-    });
-
+      </div>
+    </article>
+  `).join("");
 }
 
-displayProducts(products);
+function applyFilters() {
+  const keyword = (searchInput?.value || "").trim().toLowerCase();
+  const category = categoryFilter?.value || "all";
+  const price = priceFilter?.value || "all";
+  let filtered = PRODUCTS.filter(product => {
+    const matchesSearch = `${product.name} ${product.category}`.toLowerCase().includes(keyword);
+    const matchesCategory = category === "all" || product.category === category;
+    const matchesPrice = price === "all" || (price === "under200" && product.price < 200) || (price === "200to500" && product.price >= 200 && product.price <= 500) || (price === "over500" && product.price > 500);
+    return matchesSearch && matchesCategory && matchesPrice;
+  });
 
-// ===============================
-// Search Products
-// ===============================
-
-searchInput.addEventListener("keyup",function(){
-
-    const keyword=this.value.toLowerCase();
-
-    const filtered=products.filter(product=>
-
-        product.name.toLowerCase().includes(keyword)
-
-    );
-
-    displayProducts(filtered);
-
-});
-
-// ===============================
-// Category Filter
-// ===============================
-
-categoryFilter.addEventListener("change",function(){
-
-    const category=this.value;
-
-    if(category==="all"){
-
-        displayProducts(products);
-
-    }
-
-    else{
-
-        const filtered=products.filter(product=>
-
-            product.category===category
-
-        );
-
-        displayProducts(filtered);
-
-    }
-
-});
-
-// ===============================
-// Cart
-// ===============================
-
-function addToCart(id){
-
-    let cart=JSON.parse(localStorage.getItem("cart")) || [];
-
-    const product=products.find(item=>item.id===id);
-
-    cart.push(product);
-
-    localStorage.setItem("cart",JSON.stringify(cart));
-
-    alert(product.name + " added to cart!");
-
-    updateCartCount();
-
+  switch (sortFilter?.value) {
+    case "price-low": filtered.sort((a, b) => a.price - b.price); break;
+    case "price-high": filtered.sort((a, b) => b.price - a.price); break;
+    case "rating": filtered.sort((a, b) => b.rating - a.rating); break;
+    case "name": filtered.sort((a, b) => a.name.localeCompare(b.name)); break;
+  }
+  displayProducts(filtered);
 }
 
-// ===============================
-// Cart Count
-// ===============================
-
-function updateCartCount(){
-
-    const cart=JSON.parse(localStorage.getItem("cart")) || [];
-
-    document.getElementById("cart-count").innerText=cart.length;
-
-}
-
-updateCartCount();
+[searchInput, categoryFilter, sortFilter, priceFilter].forEach(el => el?.addEventListener(el === searchInput ? "input" : "change", applyFilters));
+const params = new URLSearchParams(window.location.search);
+if (searchInput && params.get("search")) searchInput.value = params.get("search");
+if (categoryFilter && params.get("category")) categoryFilter.value = params.get("category");
+applyFilters();
+TechShop.updateCartCount();

@@ -63,66 +63,26 @@ Cart
 </section>
 
 <section class="product-details">
-
-<div class="product-image">
-
-<img src="laptop.jpg" alt="Gaming Laptop">
-
-</div>
-
-<div class="product-info">
-
-<h2>Gaming Laptop</h2>
-
-<h3>$999</h3>
-
-<p>
-
-Experience high-performance gaming with the latest processor,
-dedicated graphics card, fast SSD storage, and immersive display.
-Perfect for gaming, programming, editing, and everyday work.
-
-</p>
-
-<div class="rating">
-
-⭐⭐⭐⭐⭐ (4.8/5)
-
-</div>
-
-<ul>
-
-<li>✔ Intel Core i7 Processor</li>
-
-<li>✔ 16GB RAM</li>
-
-<li>✔ 512GB SSD</li>
-
-<li>✔ RTX Graphics Card</li>
-
-<li>✔ Full HD Display</li>
-
-</ul>
-
-<button onclick="addToCart()">
-
-Add to Cart
-
-</button>
-
-</div>
-
+  <div class="product-image">
+    <img id="product-image" src="laptop.jpg" alt="Product">
+  </div>
+  <div class="product-info">
+    <span class="product-category" id="product-category">Product</span>
+    <h2 id="product-name">Gaming Laptop</h2>
+    <div class="price-row detail-price"><h3 id="product-price">$999</h3></div>
+    <p id="product-description"></p>
+    <div class="rating" id="product-rating">★ 4.8 <span>(128 reviews)</span></div>
+    <ul id="product-features"></ul>
+    <div class="purchase-row">
+      <div class="quantity-control detail-quantity"><button class="qty-minus" type="button">−</button><input id="quantity" type="number" min="1" value="1" aria-label="Quantity"><button class="qty-plus" type="button">+</button></div>
+      <button id="add-to-cart" type="button"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+    </div>
+  </div>
 </section>
 
-<script>
-
-function addToCart(){
-
-alert("Product Added Successfully!");
-
-}
-
-</script>
+<script src="products-data.js"></script>
+<script src="store.js"></script>
+<script src="product-details.js"></script>
 
 </body>
 
